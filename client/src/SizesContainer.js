@@ -4,10 +4,6 @@ import SizesComponent from './SizesComponent';
 import { operations } from './duck';
 
 
-const mapStateToProps = (state) => {
-
-};
-
 const mapDispatchToProps = (dispatch) => {
     const addHighRes = (index, ratio) => {
         dispatch(operations.addHighRes(index, ratio))

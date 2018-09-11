@@ -46,6 +46,7 @@ function SizeFormComponent(
                             'aria-label': 'Width',
                         }}
                         value={size.width}
+                        name={`sizes[${index}][width]`}
                         disabled={disabled}
                         className={classes.inline}
                         onChange={(event) => editSize(event.target.value, 'width', index)}
@@ -57,6 +58,7 @@ function SizeFormComponent(
                             'aria-label': 'Height',
                         }}
                         value={size.height}
+                        name={`sizes[${index}][height]`}
                         disabled={disabled}
                         className={classes.inline}
                         onChange={(event) => editSize(event.target.value, 'height', index)}
@@ -79,6 +81,7 @@ function SizeFormComponent(
                             'aria-label': 'Suffix',
                         }}
                         value={size.suffix}
+                        name={`sizes[${index}][suffix]`}
                         className={classes.inline}
                         onChange={(event) => editSize(event.target.value, 'suffix', index)}
                     />

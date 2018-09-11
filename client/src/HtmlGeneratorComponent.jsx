@@ -51,7 +51,7 @@ function HtmlGeneratorComponent(
                 </DialogActions>
             </Dialog>
 
-            <Button variant="contained" className={classes.button} onClick={(e) => {e.preventDefault(); generateHtml()} } disabled={!sizesLength}>
+            <Button variant="contained" type="submit" className={classes.button} disabled={!sizesLength}>
                 Generate HTML
             </Button>
         </div>

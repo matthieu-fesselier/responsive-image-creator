@@ -10,10 +10,14 @@ const addHighRes = Creators.addHighRes;
 const closePopup = Creators.closePopup;
 //const generateHtml = Creators.generateHtml;
 
-const generateHtml = () => {
+const generateHtml = (data) => {
+
     return dispatch => {
 
-        return fetch(`/api/generateImage`)
+        return fetch(`/api/generateImage`, {
+            method: 'post',
+            body: data,
+        })
             .then(response => response.json())
             .then(json => {
 

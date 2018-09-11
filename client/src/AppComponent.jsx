@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import OriginalImageContainer from "./OriginalImageContainer";
 import SizesListContainer from "./SizesListContainer";
@@ -50,18 +50,20 @@ const styles = () => ({
 });
 
 
-class App extends Component {
-
-    render() {
+function AppComponent ({
+    generateHtml,
+    classes
+                       }){
 
         return (
             <MuiThemeProvider theme={theme}>
                 <CssBaseline/>
 
-                <form className={this.props.classes.root}>
-                    <Grid container justify="center" spacing={24} className={this.props.classes.gridRoot}>
+                <form id="form" className={classes.root}
+                      onSubmit={(e) => { e.preventDefault(); generateHtml(new FormData(e.target)) }}>
+                    <Grid container justify="center" spacing={24} className={classes.gridRoot}>
                         <Grid item sm={6} xs={12}>
-                            <div className={this.props.classes.gridItem}>
+                            <div className={classes.gridItem}>
                                 <Typography component="h2" variant="caption" color="primary" gutterBottom>ORIGINAL
                                     IMAGE</Typography>
                                 <OriginalImageContainer/>
@@ -69,7 +71,7 @@ class App extends Component {
                         </Grid>
 
                         <Grid item sm={6} xs={12}>
-                            <div className={this.props.classes.gridItem}>
+                            <div className={classes.gridItem}>
                                 <Typography component="h2" variant="caption" color="primary" gutterBottom>GENERATED
                                     IMAGES</Typography>
                                 <SizesListContainer/>
@@ -80,7 +82,6 @@ class App extends Component {
                 </form>
             </MuiThemeProvider>
         );
-    }
 }
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(AppComponent);

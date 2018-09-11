@@ -29,6 +29,7 @@ function OriginalImageComponent(
                         accept="image/*"
                         className={classes.input}
                         id="outlined-button-file"
+                        name="image"
                         onChange={(event) => loadImage(event.target.files[0])}
                         type="file"/>
                     <label htmlFor="outlined-button-file">
@@ -46,6 +47,7 @@ function OriginalImageComponent(
                     <TextField
                         id="filename"
                         label="Filename"
+                        name="filename"
                         value={newFilename}
                         onChange={(event) => editFilename(event.target.value)}
                         fullWidth
