@@ -24,6 +24,7 @@ const styles = () => ({
 function HtmlGeneratorComponent(
     {
         html,
+        fetched,
         sizesLength,
         generateHtml,
         closePopup,
@@ -35,7 +36,7 @@ function HtmlGeneratorComponent(
             <Dialog
                 aria-labelledby="HTML Generator"
                 aria-describedby="HTML Generator"
-                open={html !== ''}>
+                open={fetched}>
                 <DialogTitle>HTML Code</DialogTitle>
                 <DialogContent>
                     <DialogContentText>

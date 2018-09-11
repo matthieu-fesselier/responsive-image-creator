@@ -51,11 +51,13 @@ const addHighRes = (id, ratio) => {
     })
 };
 
-const generateHtml = () => {
+const receiveHtml = (data) => {
     return({
-        type: types.GEN_HTML
+        type: types.REC_HTML,
+        fetched: data.fetched
     })
 };
+
 
 const closePopup = () => {
     return({
@@ -72,6 +74,6 @@ export default {
     editSize,
     removeSize,
     addHighRes,
-    generateHtml,
-    closePopup
+    closePopup,
+    receiveHtml,
 }

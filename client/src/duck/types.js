@@ -5,7 +5,7 @@ const ADD_SIZE = 'ADD_SIZE';
 const EDIT_SIZE = 'EDIT_SIZE';
 const REMOVE_SIZE = 'REMOVE_SIZE';
 const ADD_HIGH_RES = 'ADD_HIGH_RES';
-const GEN_HTML = 'GEN_HTML';
+const REC_HTML = 'REC_HTML';
 const CLOSE_POPUP = 'CLOSE_POPUP';
 
 export default {
@@ -16,6 +16,6 @@ export default {
     EDIT_SIZE,
     REMOVE_SIZE,
     ADD_HIGH_RES,
-    GEN_HTML,
+    REC_HTML,
     CLOSE_POPUP
 }

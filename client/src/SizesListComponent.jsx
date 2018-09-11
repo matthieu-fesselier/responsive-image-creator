@@ -29,7 +29,7 @@ function SizesComponent({
             )}
 
 
-            <Grid container justify="center" spacing="16">
+            <Grid container justify="center" spacing={16}>
                 <Grid item xs={8}>
                     <Button variant="contained" color="primary" className={classes.button} onClick={(e) => {
                         e.preventDefault();

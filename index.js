@@ -9,9 +9,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // Put all API endpoints under '/api'
 app.get('/api/generateImage', (req, res) => {
   // Return them as json
-  res.json({});
-
-  console.log(`Image generated`);
+  res.json({fetched: true});
 });
 
 // The "catchall" handler: for any request that doesn't

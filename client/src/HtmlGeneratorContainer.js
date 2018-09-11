@@ -5,10 +5,12 @@ import { operations } from './duck';
 
 
 const mapStateToProps = (state) => {
-    const {html} = state.image;
+    const {html, fetched} = state.image;
     const sizesLength = state.image.sizes.length;
+
     return {
         html,
+        fetched,
         sizesLength
     }
 };

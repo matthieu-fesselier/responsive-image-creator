@@ -14,7 +14,8 @@ const INITIAL_STATE = {
         height: '',
     },
     sizes: [],
-    html: ''
+    html: '',
+    fetched: false
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -159,8 +160,13 @@ const reducer = (state = INITIAL_STATE, action) => {
             return Object.assign({}, state, {sizes: newSizes});
         }
 
-        case types.GEN_HTML: {
 
+        case types.CLOSE_POPUP: {
+            return Object.assign({}, state, {fetched: false});
+        }
+
+        case types.REC_HTML: {
+            const { fetched } = action;
             let srcset = '';
 
             state.sizes.forEach((size, index) => {
@@ -173,12 +179,7 @@ const reducer = (state = INITIAL_STATE, action) => {
                 srcset="${srcset}"
             />
             `;
-            return Object.assign({}, state, {html: html});
-        }
-
-        case types.CLOSE_POPUP: {
-            let code = '';
-            return Object.assign({}, state, {html: code});
+            return Object.assign({}, state, {html: html, fetched: fetched});
         }
 
         default:
