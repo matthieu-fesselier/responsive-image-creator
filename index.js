@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const multer = require('multer')
+const multer = require('multer');
 const upload = multer({dest: './uploads/'});
 const sharp = require('sharp');
 
@@ -13,8 +13,20 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // Put all API endpoints under '/api'
 app.post('/api/generateImage', upload.single('image'), (req, res) => {
 
-    console.log(req.body);
-    // Return them as json
+
+    req.body.sizes.forEach(function (size) {
+        let filePath = `tmp/${req.body.filename}${size.suffix}.jpg`;
+
+        sharp(req.file.path) // Resize image with the given sizes
+            .resize(Number.parseInt(size.width), Number.parseInt(size.height))
+            .toFile(filePath, function (err) {
+                if (err) {
+                    res.sendStatus(500);
+                    return;
+                }
+                //res.download(__dirname + '/' + filePath);
+            });
+    });
     res.json({fetched: true});
 });
 
