@@ -1,6 +1,7 @@
 import types from './types';
 
 import utils from '../utils/file';
+import copy from 'copy-to-clipboard';
 
 const INITIAL_STATE = {
     file: '',
@@ -15,7 +16,8 @@ const INITIAL_STATE = {
     },
     sizes: [],
     html: '',
-    fetched: false
+    generated: false,
+    copied: false
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -162,11 +164,11 @@ const reducer = (state = INITIAL_STATE, action) => {
 
 
         case types.CLOSE_POPUP: {
-            return Object.assign({}, state, {fetched: false});
+            return Object.assign({}, state, {generated: false});
         }
 
         case types.REC_HTML: {
-            const { fetched } = action;
+            const { generated } = action;
             let srcset = '';
 
             state.sizes.forEach((size, index) => {
@@ -179,7 +181,12 @@ const reducer = (state = INITIAL_STATE, action) => {
                 srcset="${srcset}"
             />
             `;
-            return Object.assign({}, state, {html: html, fetched: fetched});
+            return Object.assign({}, state, {html: html, generated: generated});
+        }
+
+        case types.COPY_CLIP: {
+            copy(state.html);
+            return Object.assign({}, state, {copied: true});
         }
 
         default:

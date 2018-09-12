@@ -24,10 +24,11 @@ const styles = () => ({
 function HtmlGeneratorComponent(
     {
         html,
-        fetched,
+        generated,
         sizesLength,
         generateHtml,
         closePopup,
+        copyToClipboard,
         classes
     }) {
     return (
@@ -36,7 +37,7 @@ function HtmlGeneratorComponent(
             <Dialog
                 aria-labelledby="HTML Generator"
                 aria-describedby="HTML Generator"
-                open={fetched}>
+                open={generated}>
                 <DialogTitle>HTML Code</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -47,6 +48,9 @@ function HtmlGeneratorComponent(
                 <DialogActions>
                     <Button onClick={() => closePopup()} color="primary">
                         Close
+                    </Button>
+                    <Button onClick={() => copyToClipboard()} variant="contained" color="primary">
+                        Copy to clipboard
                     </Button>
                 </DialogActions>
             </Dialog>

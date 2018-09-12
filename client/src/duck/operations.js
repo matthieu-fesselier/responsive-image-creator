@@ -8,25 +8,17 @@ const editSize = Creators.editSize;
 const removeSize = Creators.removeSize;
 const addHighRes = Creators.addHighRes;
 const closePopup = Creators.closePopup;
-//const generateHtml = Creators.generateHtml;
+const copyToClipboard = Creators.copyToClipboard;
 
 const generateHtml = (data) => {
 
     return dispatch => {
-
         return fetch(`/api/generateImage`, {
             method: 'post',
             body: data,
         })
             .then(response => response.json())
             .then(json => {
-
-                // Dispatching this action while passing the 'data' array
-                // we created above will update the store with this data.
-                // It is good practice to send only the required information
-                // rather than trimming the data when and where it is used.
-                // This is why we aren't sending the entire JSON response to
-                // the Redux store.
                 dispatch(receiveHtml(json))
             });
     }
@@ -44,5 +36,6 @@ export default {
     addHighRes,
     generateHtml,
     closePopup,
-    receiveHtml
+    receiveHtml,
+    copyToClipboard
 }

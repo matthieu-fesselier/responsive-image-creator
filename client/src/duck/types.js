@@ -7,6 +7,7 @@ const REMOVE_SIZE = 'REMOVE_SIZE';
 const ADD_HIGH_RES = 'ADD_HIGH_RES';
 const REC_HTML = 'REC_HTML';
 const CLOSE_POPUP = 'CLOSE_POPUP';
+const COPY_CLIP = 'COPY_CLIP';
 
 export default {
     LOAD_IMAGE,
@@ -17,5 +18,6 @@ export default {
     REMOVE_SIZE,
     ADD_HIGH_RES,
     REC_HTML,
-    CLOSE_POPUP
+    CLOSE_POPUP,
+    COPY_CLIP
 }

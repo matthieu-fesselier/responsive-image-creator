@@ -5,12 +5,12 @@ import { operations } from './duck';
 
 
 const mapStateToProps = (state) => {
-    const {html, fetched} = state.image;
+    const {html, generated} = state.image;
     const sizesLength = state.image.sizes.length;
 
     return {
         html,
-        fetched,
+        generated,
         sizesLength
     }
 };
@@ -24,7 +24,12 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(operations.closePopup())
     };
 
-    return { generateHtml, closePopup };
+    const copyToClipboard = () => {
+        dispatch(operations.copyToClipboard())
+    };
+
+
+    return { generateHtml, closePopup, copyToClipboard };
 };
 
 const HtmlGeneratorContainer = connect(

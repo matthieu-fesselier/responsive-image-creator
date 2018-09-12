@@ -54,7 +54,7 @@ const addHighRes = (id, ratio) => {
 const receiveHtml = (data) => {
     return({
         type: types.REC_HTML,
-        fetched: data.fetched
+        generated: data.generated
     })
 };
 
@@ -65,6 +65,11 @@ const closePopup = () => {
     })
 };
 
+const copyToClipboard = () => {
+    return({
+        type: types.COPY_CLIP
+    })
+};
 
 export default {
     loadImage,
@@ -76,4 +81,5 @@ export default {
     addHighRes,
     closePopup,
     receiveHtml,
+    copyToClipboard
 }
