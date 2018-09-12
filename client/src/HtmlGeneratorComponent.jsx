@@ -18,6 +18,9 @@ const styles = () => ({
         padding: '10px',
         display: 'block',
         borderRadius: '5px'
+    },
+    progress: {
+        marginRight: '10px'
     }
 });
 

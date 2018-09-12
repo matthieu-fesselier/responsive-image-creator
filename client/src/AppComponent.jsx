@@ -7,6 +7,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 
 
@@ -17,8 +18,8 @@ const theme = createMuiTheme({
             dark: "#5C6FE9"
         },
         secondary: {
-            main: '#cb4a53',
-            dark: "#B6444C"
+            main: '#ff5c67',
+            dark: "#ef535f"
         },
         background: {
             default: "#6078E9"
@@ -41,6 +42,12 @@ const styles = () => ({
         borderRadius: '5px',
         padding: '10px' // todo : theme unit
     },
+    loader: {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        right: '0'
+    },
     root: {
         height: '100vh',
         width: '100vw',
@@ -51,6 +58,7 @@ const styles = () => ({
 
 
 function AppComponent ({
+    loading,
     generateHtml,
     classes
                        }){
@@ -58,6 +66,10 @@ function AppComponent ({
         return (
             <MuiThemeProvider theme={theme}>
                 <CssBaseline/>
+
+                {loading &&
+                    <LinearProgress color="secondary" className={classes.loader} />
+                }
 
                 <form id="form" className={classes.root}
                       onSubmit={(e) => { e.preventDefault(); generateHtml(new FormData(e.target)) }}>

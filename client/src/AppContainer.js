@@ -3,6 +3,12 @@ import AppComponent from './AppComponent';
 
 import { operations } from './duck';
 
+const mapStateToProps = (state) => {
+    const { loading } = state.image;
+    return {
+        loading
+    }
+};
 
 const mapDispatchToProps = (dispatch) => {
     const generateHtml = (data) => {
@@ -13,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const AppContainer = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(AppComponent);
 

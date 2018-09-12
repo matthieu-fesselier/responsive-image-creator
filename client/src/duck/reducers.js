@@ -16,6 +16,7 @@ const INITIAL_STATE = {
     },
     sizes: [],
     html: '',
+    loading: false,
     generated: false,
     copied: false
 };
@@ -181,7 +182,11 @@ const reducer = (state = INITIAL_STATE, action) => {
                 srcset="${srcset}"
             />
             `;
-            return Object.assign({}, state, {html: html, generated: generated});
+            return Object.assign({}, state, {html: html, generated: generated, loading: false});
+        }
+
+        case types.GEN_IMG: {
+            return Object.assign({}, state, {loading: true});
         }
 
         case types.COPY_CLIP: {

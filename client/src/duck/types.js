@@ -5,6 +5,7 @@ const ADD_SIZE = 'ADD_SIZE';
 const EDIT_SIZE = 'EDIT_SIZE';
 const REMOVE_SIZE = 'REMOVE_SIZE';
 const ADD_HIGH_RES = 'ADD_HIGH_RES';
+const GEN_IMG = 'GEN_IMG';
 const REC_HTML = 'REC_HTML';
 const CLOSE_POPUP = 'CLOSE_POPUP';
 const COPY_CLIP = 'COPY_CLIP';
@@ -17,6 +18,7 @@ export default {
     EDIT_SIZE,
     REMOVE_SIZE,
     ADD_HIGH_RES,
+    GEN_IMG,
     REC_HTML,
     CLOSE_POPUP,
     COPY_CLIP

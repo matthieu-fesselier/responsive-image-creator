@@ -51,6 +51,13 @@ const addHighRes = (id, ratio) => {
     })
 };
 
+const generateImages = () => {
+    return({
+        type: types.GEN_IMG,
+    })
+};
+
+
 const receiveHtml = (data) => {
     return({
         type: types.REC_HTML,
@@ -80,6 +87,7 @@ export default {
     removeSize,
     addHighRes,
     closePopup,
+    generateImages,
     receiveHtml,
     copyToClipboard
 }

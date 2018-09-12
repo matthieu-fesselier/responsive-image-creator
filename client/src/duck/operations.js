@@ -7,12 +7,15 @@ const addSize = Creators.addSize;
 const editSize = Creators.editSize;
 const removeSize = Creators.removeSize;
 const addHighRes = Creators.addHighRes;
+const generateImages = Creators.generateImages;
 const closePopup = Creators.closePopup;
 const copyToClipboard = Creators.copyToClipboard;
 
 const generateHtml = (data) => {
 
     return dispatch => {
+        dispatch(generateImages());
+
         return fetch(`/api/generateImage`, {
             method: 'post',
             body: data,
@@ -35,6 +38,7 @@ export default {
     removeSize,
     addHighRes,
     generateHtml,
+    generateImages,
     closePopup,
     receiveHtml,
     copyToClipboard
