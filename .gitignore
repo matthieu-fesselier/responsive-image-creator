@@ -68,3 +68,5 @@ typings/
 # Uploads
 uploads/*
 tmp/*
+!uploads/.gitkeep
+!tmp/.gitkeep
