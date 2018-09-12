@@ -3,6 +3,7 @@ const path = require('path');
 const multer = require('multer');
 const upload = multer({dest: './uploads/'});
 const sharp = require('sharp');
+const fs = require('fs');
 
 const app = express();
 
@@ -13,21 +14,26 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // Put all API endpoints under '/api'
 app.post('/api/generateImage', upload.single('image'), (req, res) => {
 
+    let zip = new require('node-zip')();
 
-    req.body.sizes.forEach(function (size) {
-        let filePath = `tmp/${req.body.filename}${size.suffix}.jpg`;
+    let promises = req.body.sizes.map(function(size) { // iterate over sizes
+        let newFilename = `${req.body.filename}${size.suffix}.jpg`;
 
-        sharp(req.file.path) // Resize image with the given sizes
+        // Resize image with the given sizes
+        return sharp(req.file.path)
             .resize(Number.parseInt(size.width), Number.parseInt(size.height))
-            .toFile(filePath, function (err) {
-                if (err) {
-                    res.sendStatus(500);
-                    return;
-                }
-                //res.download(__dirname + '/' + filePath);
+            .toBuffer()
+            .then((data) => { // and zip them
+                zip.file(newFilename, data, {base64: true});
             });
     });
-    res.json({fetched: true});
+
+    // when all is complete, zip the whole file
+    Promise.all(promises).then(() => {
+        let zipFile = zip.generate({base64:false,compression:'DEFLATE'}); // Zip files
+        fs.writeFileSync(`tmp/${req.body.filename}.zip`, zipFile, 'binary');
+        res.json({fetched: true});
+    });
 });
 
 // The "catchall" handler: for any request that doesn't

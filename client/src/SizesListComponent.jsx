@@ -30,13 +30,13 @@ function SizesComponent({
 
 
             <Grid container justify="center" spacing={16}>
-                <Grid item xs={8}>
-                    <Button variant="contained" color="primary" className={classes.button} onClick={(e) => {
+                <Grid item xs={4}>
+                    <Button variant="contained" className={classes.button} onClick={(e) => {
                         e.preventDefault();
                         addSize()
                     }} disabled={!filename}>Add a size</Button>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={8}>
                     <HtmlGeneratorContainer/>
                 </Grid>
             </Grid>

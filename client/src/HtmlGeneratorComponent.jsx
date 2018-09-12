@@ -51,8 +51,8 @@ function HtmlGeneratorComponent(
                 </DialogActions>
             </Dialog>
 
-            <Button variant="contained" type="submit" className={classes.button} disabled={!sizesLength}>
-                Generate HTML
+            <Button variant="contained" color="primary" type="submit" className={classes.button} disabled={!sizesLength}>
+                Generate my images
             </Button>
         </div>
     );
