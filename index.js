@@ -32,7 +32,7 @@ app.post('/api/generateImage', upload.single('image'), (req, res) => {
     Promise.all(promises).then(() => {
         let zipFile = zip.generate({base64:false,compression:'DEFLATE'}); // Zip files
         fs.writeFileSync(`tmp/${req.body.filename}.zip`, zipFile, 'binary');
-        res.json({generated: true});
+        res.download(__dirname + `/tmp/${req.body.filename}.zip`, `${req.body.filename}.zip`);
     });
 });
 
