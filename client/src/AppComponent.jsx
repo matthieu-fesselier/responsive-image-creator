@@ -54,6 +54,22 @@ const styles = () => ({
         width: '100vw',
         overflow: 'hidden',
         padding: '15px'
+    },
+    copyright: {
+        position: "absolute",
+        width: "100%",
+        bottom: "3px",
+        color: "#FFF",
+        fontSize: "11px",
+        textAlign: "center",
+        opacity: "0.7"
+    },
+    footerLink: {
+        color: "#FFF",
+
+        '&:hover': {
+            color: "#EEEEEE"
+        }
     }
 });
 
@@ -93,6 +109,9 @@ function AppComponent ({
 
                     </Grid>
                 </form>
+                <Typography className={classes.copyright}>
+                    Made with 💛 by <a href="https://matthieufesselier.com" target="_blank" className={classes.footerLink}>Matthieu Fesselier</a> - <a href="https://github.com/matthieu-fesselier/responsive-image-creator" target="_blank" className={classes.footerLink}>Github Repository</a>
+                </Typography>
             </MuiThemeProvider>
         );
 }
