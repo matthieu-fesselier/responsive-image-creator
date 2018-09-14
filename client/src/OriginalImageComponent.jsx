@@ -5,12 +5,17 @@ import PreviewImageContainer from './PreviewImageContainer';
 import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import UploadIcon from '@material-ui/icons/CloudUploadOutlined';
 
 
 const styles = () => ({
     input: {
         display: 'none',
     },
+    leftIcon: {
+        marginRight: "10px",
+        fontSize: 20
+    }
 });
 
 function OriginalImageComponent(
@@ -34,6 +39,7 @@ function OriginalImageComponent(
                         type="file"/>
                     <label htmlFor="outlined-button-file">
                         <Button variant="outlined" component="span">
+                            <UploadIcon className={classes.leftIcon}/>
                             Upload your image
                         </Button>
                     </label>

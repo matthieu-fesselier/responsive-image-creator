@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -8,6 +9,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import {withStyles} from "@material-ui/core/styles/index";
+
 
 const styles = () => ({
     button: {
@@ -42,9 +44,10 @@ function HtmlGeneratorComponent(
                 aria-labelledby="HTML Generator"
                 aria-describedby="HTML Generator"
                 open={generated}>
-                <DialogTitle>HTML Code</DialogTitle>
+                <DialogTitle>👌 Your download has started</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
+                        <Typography gutterBottom>Please find the corresponding HTML snippet below:</Typography>
                         <code className={classes.code}>{html}</code>
                     </DialogContentText>
                 </DialogContent>
