@@ -4,7 +4,9 @@ import {withStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import ErrorOutlinedIcon from '@material-ui/icons/ErrorOutlineOutlined';
 
 
 const styles = () => ({
@@ -19,6 +21,15 @@ const styles = () => ({
     },
     labels: {
         margin: '5px 0 0 5px'
+    },
+    dimensionsField: {
+        position: "relative",
+        display: "inline-block"
+    },
+    errorIcon: {
+        position: "absolute",
+        right: "-30px",
+        top: "0"
     }
 });
 
@@ -39,8 +50,9 @@ function SizeFormComponent(
             <div>
                 <Typography variant="caption" className={classes.labels}>Size</Typography>
 
-                <div>
+                <div className={classes.dimensionsField}>
                     <Input
+                        error={size.error}
                         placeholder="Width"
                         inputProps={{
                             'aria-label': 'Width',
@@ -53,6 +65,7 @@ function SizeFormComponent(
                     />
                     <Typography component="span" className={classes.inline}>x</Typography>
                     <Input
+                        error={size.error}
                         placeholder="Height"
                         inputProps={{
                             'aria-label': 'Height',
@@ -64,7 +77,11 @@ function SizeFormComponent(
                         onChange={(event) => editSize(event.target.value, 'height', index)}
                     />
                     {size.error && (
-                        <p>{size.error}</p>
+                        <div className={classes.errorIcon}>
+                        <Tooltip title={size.error} placement="right">
+                        <ErrorOutlinedIcon color="error" />
+                        </Tooltip>
+                        </div>
                     )}
                 </div>
 
