@@ -18,6 +18,7 @@ const styles = () => ({
 
 function SizesComponent({
                             filename,
+                            loading,
                             sizes,
                             addSize,
                             classes
@@ -34,7 +35,7 @@ function SizesComponent({
                     <Button variant="contained" className={classes.button} onClick={(e) => {
                         e.preventDefault();
                         addSize()
-                    }} disabled={!filename}>Add a size</Button>
+                    }} disabled={!filename || loading}>Add a size</Button>
                 </Grid>
                 <Grid item xs={8}>
                     <HtmlGeneratorContainer/>

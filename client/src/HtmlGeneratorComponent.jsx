@@ -27,6 +27,7 @@ const styles = () => ({
 function HtmlGeneratorComponent(
     {
         html,
+        loading,
         generated,
         sizesLength,
         generateHtml,
@@ -58,7 +59,7 @@ function HtmlGeneratorComponent(
                 </DialogActions>
             </Dialog>
 
-            <Button variant="contained" color="primary" type="submit" className={classes.button} disabled={!sizesLength}>
+            <Button variant="contained" color="primary" type="submit" className={classes.button} disabled={!sizesLength || loading}>
                 Generate my images
             </Button>
         </div>
